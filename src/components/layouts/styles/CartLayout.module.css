@@ -1,0 +1,12 @@
+.root {
+    @apply flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 lg:gap-x-4;
+}
+
+.box {
+    @apply w-full rounded-lg border border-primary p-4 bg-primary-light bg-opacity-20;
+    min-height: 15rem;
+}
+
+.actionsWrapper {
+    @apply absolute inset-x-0 bottom-0 p-4
+}

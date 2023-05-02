@@ -1,0 +1,23 @@
+.root {
+    @apply flex flex-col p-4;
+
+    & section {
+        @apply p-4 mb-7
+    }
+
+    & h4 {
+        @apply text-gray-600 font-bold mb-1
+    }
+}
+
+.header {
+    @apply py-3 mb-5 text-center text-white font-bold tracking-wide bg-secondary
+}
+
+.cat {
+    @apply flex items-center relative gap-x-5 mb-5 bg-primary-light bg-opacity-60 rounded-lg py-2 pr-14 text-sub
+}
+
+.catImgWrapper {
+    @apply absolute bg-primary z-10 -right-2 p-2 rounded-full shadow-sm border-2 border-white
+}

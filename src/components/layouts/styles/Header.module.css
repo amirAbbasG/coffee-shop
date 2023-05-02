@@ -1,0 +1,11 @@
+
+.textFiled {
+    @apply w-[94%] sm:w-4/5 md:w-3/4 lg:w-1/2 mx-auto
+}
+
+.topNav {
+    @apply flex items-center justify-between
+    px-4 py-2 mb-10 sticky top-0 z-50
+    border-b border-secondary bg-secondary-light shadow-2xl shadow-secondary
+
+ }

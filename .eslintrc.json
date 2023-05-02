@@ -1,3 +1,29 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "spaced-comment": "off",
+    "no-console": "off",
+    "consistent-return": "off",
+    "func-names": "off",
+    "object-shorthand": "off",
+    "no-process-exit": "off",
+    "no-param-reassign": "off",
+    "no-return-await": "off",
+    "no-underscore-dangle": "off",
+    "no-restricted-imports": "off",
+    "no-restricted-imports": [
+      "warn",
+      {
+        "paths": [
+          {
+            "name": "react-redux",
+            "importNames": ["useSelector", "useDispatch"],
+            "message": "Use typed hooks `useAppDispatch` and `useAppSelector` instead."
+          }
+        ]
+      }
+    ],
+    "prefer-destructuring": ["warn", { "object": true, "array": false }],
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "req|res|next|val" }]
+  }
 }

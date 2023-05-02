@@ -1,0 +1,3 @@
+.helpText {
+    @apply bg-white rounded-lg p-5 w-full text-sub font-semibold
+}

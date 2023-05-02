@@ -1,0 +1,17 @@
+.root {
+    @apply flex flex-col justify-end relative
+    px-2 pb-8 w-24 h-28 rounded-full
+    shadow-lg backdrop-blur-md border border-white
+    text-center font-semibold text-xs md:text-sm text-white;
+    background: linear-gradient(to bottom, #ffffff50, #004E3455);
+
+    &:hover {
+        & .img {
+            @apply scale-125 -translate-y-2 duration-500;
+          }
+     }
+}
+
+.img {
+    @apply absolute -top-5
+}

@@ -1,27 +1,161 @@
+@import "font-face.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html,
+body {
+    padding: 0;
+    margin: 0;
+    direction: rtl;
+    font-family: irsans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    overflow-y: auto;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#__next {
+    background-color: theme('colors.secondary.light');
+}
+
+@layer base {
+    h1 {
+        @apply text-4xl
+    }
+
+    h2 {
+        @apply text-3xl;
+    }
+
+    h3 {
+        @apply text-2xl
+    }
+    h4 {
+        @apply text-xl
+    }
+    h5 {
+        @apply text-lg
+    }
+}
+
+
+
+@layer utilities {
+    .col {
+        @apply flex flex-col;
+    }
+
+    .center {
+        @apply flex items-center justify-center;
+    }
+
+    .spacing-row {
+        @apply flex justify-between items-center;
+    }
+
+    .spacing-col {
+        @apply flex flex-col justify-between;
+    }
+
+    .cover {
+        @apply absolute inset-0 w-full h-full;
+    }
+
+    .icon {
+        @apply text-3xl font-bold
+    }
+    .hide-scrollbar {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+
+/*.center {*/
+/*    @apply flex items-center justify-center;*/
+/*}*/
+
+@layer components {
+    .card-link {
+        @apply absolute inset-0 z-[1] hover:bg-primary-light hover:bg-opacity-20 duration-300;
+    }
+    .slider-value {
+        @apply p-2 bg-primary bg-opacity-40 text-white text-center w-1/2 rounded-lg
+    }
+    .button {
+        @apply bg-primary hover:bg-opacity-80 duration-300 px-4 py-3
+    }
+}
+
+
+.Toastify__toast-body {
+    text-align: right !important;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#pwaPrompt {
+    display: none
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #cccdcf;
+    border-radius: 7px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.primary.light');
+}
+.swiper-slide-thumb-active:after {
+    @apply cover bg-primary bg-opacity-20 rounded-lg;
+    content: "";
+    display: block;
+}
+
+.swiper-slide-thumb-active {
+   @apply !border-primary
+}
+
+
+
+@media (display-mode: browser) {
+    #pwaPrompt {
+        display: flex
+    }
 }

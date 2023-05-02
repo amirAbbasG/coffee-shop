@@ -1,0 +1,15 @@
+.root {
+    @apply relative flex
+    gap-x-1 m-1 p-1 w-60 h-32 lg:w-72 lg:h-40
+    rounded-lg border border-primary-light backdrop-blur-md
+    text-xs lg:text-base;
+    background: linear-gradient(to right bottom, #ffffff50, #004E3455);
+}
+
+.details {
+    @apply flex flex-col w-1/2 p-2 justify-between
+}
+
+.imgWrapper {
+    @apply w-1/2 h-full relative h-full rounded-lg overflow-hidden
+}

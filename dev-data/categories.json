@@ -1,0 +1,93 @@
+[
+  {
+    "id": "1",
+    "title": "فست فود",
+    "pic": "burger.png"
+  },
+  {
+    "id": "2",
+    "title": "شیرینی",
+    "pic": "cake.png"
+  },
+  {
+    "id": "3",
+    "title": "نوشیدنی گرم",
+    "pic": "coffee.png"
+  },
+  {
+    "id": "4",
+    "title": "نوشیدنی سرد",
+    "pic": "cold-drink.png"
+  },
+  {
+    "id": "5",
+    "title": "دسر",
+    "pic": "ice-cream-cone.png"
+  },
+  {
+    "id": "6",
+    "title": "صبخانه",
+    "pic": "pancake.png",
+    "parentId": "1"
+  },
+  {
+    "id": "7",
+    "title": "ساندویچ",
+    "pic": "hot-dog.png",
+    "parentId": "1"
+  },
+  {
+    "id": "8",
+    "title": "برگر",
+    "pic": "burger.png",
+    "parentId": "1"
+  },
+  {
+    "id": "9",
+    "title": "پیتزا",
+    "pic": "pizza.png",
+    "parentId": "1"
+  },
+  {
+    "id": "10",
+    "title": "سالاد",
+    "pic": "salad.png",
+    "parentId": "1"
+  },
+  {
+    "id": "11",
+    "title": "قهوه",
+    "pic": "coffee-cup.png",
+    "parentId": "3"
+  },
+  {
+    "id": "12",
+    "title": "چای",
+    "pic": "tea-pot.png",
+    "parentId": "3"
+  },
+  {
+    "id": "13",
+    "title": "آبمیوه",
+    "pic": "drink-glass.png",
+    "parentId": "4"
+  },
+  {
+    "id": "14",
+    "title": "میلک شیک",
+    "pic": "coffee-glass.png",
+    "parentId": "4"
+  },
+  {
+    "id": "15",
+    "title": "بستنی",
+    "pic": "ice-cream-cone.png",
+    "parentId": "5"
+  },
+  {
+    "id": "16",
+    "title": "گلاسه",
+    "pic": "strawberry-milkshake.png",
+    "parentId": "5"
+  }
+]

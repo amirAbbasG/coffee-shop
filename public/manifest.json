@@ -1,0 +1,17 @@
+{
+  "name" : "کافی شاپ",
+  "short_name" : "کافی شاپ",
+  "start_url" : "/",
+  "prefer_related_applications": false,
+  "scope" : "/",
+  "display" : "standalone",
+  "dir" : "rtl",
+  "lang" : "fa",
+  "background_color" : "#fff",
+  "theme_color" : "#004E34",
+  "orientation": "portrait",
+  "description": "کافی شاپ",
+  "icons" : [
+
+  ]
+}
