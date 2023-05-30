@@ -12,7 +12,7 @@ interface Props {
 
 const CategoryCard: FC<Props> = ({category}) => {
     return (
-        <Link href={`/search/categories/${category.id}`}>
+        <Link href={`/search/categories/${category.id}?catTitle=${category.title}`}>
             <div className={ styles.root}>
                 <Image src={`/images/categories/${category.pic}`} alt={category.title} width={75} height={75} className={styles.img}/>
                 <p className="font-medium">{category.title}</p>

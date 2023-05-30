@@ -10,6 +10,7 @@ import {MenuItem} from "@custom-types/menu";
 import {ImageGallery, ItemPrice, OrderButtons} from "@components";
 import styles from "@styles/ItemDetials.module.css"
 import {CartItem} from "@custom-types/cart";
+import {NextSeo} from "next-seo";
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const paths = menuItems.map(i => ({
@@ -52,48 +53,58 @@ const ItemDetails: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({menuIt
         quantity: 1
     }
     return (
-        <div className={styles.root}>
-
-            <ImageGallery
-                imageList={[
-                    `/images/menu-items/${menuItem?.pic}`,
-                    `/images/menu-items/${menuItem?.pic}`,
-                    `/images/menu-items/${menuItem?.pic}`,
-                    `/images/menu-items/${menuItem?.pic}`,
-                    `/images/menu-items/${menuItem?.pic}`,
-                    `/images/menu-items/${menuItem?.pic}`
-                ]}/>
-            <div className={styles.detailsWrapper}>
-                <div className="spacing-row">
-                    <h5>{menuItem?.title}</h5>
-                    <Rating
-                        size="small" name="read-only"
-                        value={4}
-                        readOnly
-                        sx={{
-                            '& .MuiRating-iconFilled': {
-                                color: 'primary.main',
-                            },
-                        }}/>
+        <>
+            <NextSeo
+                title={title}
+                description=""
+                openGraph={{
+                    url: `https://www.coffee-shop.ie/item/${id}`,
+                    title: 'Open Graph Title',
+                    description: 'Open Graph Description',
+                }}
+            />
+            <div className={styles.root}>
+                <ImageGallery
+                    imageList={[
+                        `/images/menu-items/${menuItem?.pic}`,
+                        `/images/menu-items/${menuItem?.pic}`,
+                        `/images/menu-items/${menuItem?.pic}`,
+                        `/images/menu-items/${menuItem?.pic}`,
+                        `/images/menu-items/${menuItem?.pic}`,
+                        `/images/menu-items/${menuItem?.pic}`
+                    ]}/>
+                <div className={styles.detailsWrapper}>
+                    <div className="spacing-row">
+                        <h5>{menuItem?.title}</h5>
+                        <Rating
+                            size="small" name="read-only"
+                            value={4}
+                            readOnly
+                            sx={{
+                                '& .MuiRating-iconFilled': {
+                                    color: 'primary.main',
+                                },
+                            }}/>
+                    </div>
+                    <p className="text-gray-800">
+                        <span className="font-bold">دسته بندی:</span>
+                        {" "}
+                        {category.title}
+                    </p>
+                    <p className="text-justify text-gray-700">{description}</p>
                 </div>
-                <p className="text-gray-800">
-                    <span className="font-bold">دسته بندی:</span>
-                    {" "}
-                    {category.title}
-                </p>
-                <p className="text-justify text-gray-700">{description}</p>
-            </div>
 
-            <div className={styles.footer}>
-                <ItemPrice
-                    price={menuItem?.price || 0}
-                    discountedPrice={menuItem?.discountedPrice || 0}
-                    discountPercentage={menuItem?.discountPercentage || 0}
-                    size="lg"
+                <div className={styles.footer}>
+                    <ItemPrice
+                        price={menuItem?.price || 0}
+                        discountedPrice={menuItem?.discountedPrice || 0}
+                        discountPercentage={menuItem?.discountPercentage || 0}
+                        size="lg"
                     />
-                <OrderButtons item={cartItem}/>
+                    <OrderButtons item={cartItem}/>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

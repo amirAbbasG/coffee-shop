@@ -20,7 +20,7 @@ export const errorMessage = (message: string) => {
     });
 };
 
-export const showError = (error: Error | AxiosError) => {
+export const showError = (error: Error | AxiosError | string) => {
     if (axios.isAxiosError(error)) {
         if (error?.response?.data?.message) {
             errorMessage(error.response.data.message);

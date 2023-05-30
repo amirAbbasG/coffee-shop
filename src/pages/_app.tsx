@@ -5,10 +5,13 @@ import Head from "next/head";
 import {CssBaseline, StyledEngineProvider, ThemeProvider} from "@mui/material";
 import {ToastContainer} from "react-toastify";
 import {Provider} from "react-redux";
+import {SessionProvider} from "next-auth/react";
+import {DefaultSeo} from "next-seo";
 
 import store from "@store";
 import {UiContextProvider} from "@contexts/UiContext";
 import {Layout} from "@components";
+import seoConfig from "../../next-seo.config"
 
 import theme from "@styles/theme";
 import "react-toastify/dist/ReactToastify.css"
@@ -29,15 +32,17 @@ export default function App({Component, pageProps}: AppProps) {
             <StyledEngineProvider injectFirst>
                 <ThemeProvider theme={theme}>
                     <CssBaseline/>
-                    <Provider store={store}>
-
-                        <UiContextProvider>
-                            <Layout>
-                                <Component {...pageProps} />
-                            </Layout>
-                        </UiContextProvider>
-                        <ToastContainer/>
-                    </Provider>
+                    <SessionProvider session={pageProps.session}>
+                        <Provider store={store}>
+                            <UiContextProvider>
+                                <DefaultSeo {...seoConfig}/>
+                                <Layout>
+                                    <Component {...pageProps} />
+                                </Layout>
+                            </UiContextProvider>
+                            <ToastContainer/>
+                        </Provider>
+                    </SessionProvider>
                 </ThemeProvider>
             </StyledEngineProvider>
         </>

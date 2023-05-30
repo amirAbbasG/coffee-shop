@@ -41,7 +41,7 @@ const FilterItemsDrawer: FC<Props> = ({open, handleClose, categories}) => {
                     <section>
                         {
                             categories?.map(c => (
-                                <Link href={`/search/categories/${c.id}`} key={c.id} className={styles.cat}>
+                                <Link href={`/search/categories/${c.id}?catTitle=${c.title}`} key={c.id} className={styles.cat}>
                                     <div className={styles.catImgWrapper}>
                                         <Image src={`/images/categories/${c.pic}`} alt={c.title} width={35} height={35}/>
                                     </div>

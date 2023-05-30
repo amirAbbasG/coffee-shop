@@ -12,6 +12,8 @@ import menuItems from "@dev-data/menu-items.json"
 import categoriesData from "@dev-data/categories.json"
 import {FilterItemsDrawer, MenuItemCard} from "@components";
 import SortProductsSelect from "@components/modals/SortItemsSelect";
+import {NextSeo} from "next-seo";
+import {useRouter} from "next/router";
 
 
 interface ServerSideProps {
@@ -38,11 +40,23 @@ export const getServerSideProps: GetServerSideProps<ServerSideProps, ServerSideP
 
 
 const SearchByCategory: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({items, categories}) => {
+    const router = useRouter()
+    const {catId, catTitle} = router.query
+
     const [sortType, setSortType] = useState("0");
     const [openFilter, setOpenFilter] = useState(false);
 
     return (
         <>
+            <NextSeo
+                title={catTitle as string || "سرچ با دسته بندی"}
+                description=""
+                openGraph={{
+                    url: `https://www.coffee-shop.ie/categories/${catId}`,
+                    title: 'Open Graph Title',
+                    description: 'Open Graph Description',
+                }}
+            />
             <div className="spacing-row mb-5 px-12">
                 <Button
                     variant="outlined"

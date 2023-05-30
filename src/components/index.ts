@@ -23,6 +23,7 @@ export {default as FilterItemsDrawer} from "@components/modals/FilterItemsDrawer
 export {default as CartDrawer} from "@components/modals/CartDrawer"
 export {default as LoginDrawer} from "@components/modals/LoginDrawer"
 export {default as SendTimesDrawer} from "@components/modals/SendTimesDrawer"
+export {default as ProfileMenu} from "@components/modals/ProfileMenu"
 //#endregion
 
 //#region common

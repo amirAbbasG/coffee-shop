@@ -7,6 +7,7 @@ import styles from "@styles/OutOrder.module.css"
 import cn from "classnames";
 import {useAppSelector} from "@hooks/redux-hooks";
 import {SendTimes} from "@custom-types/cart";
+import {NextSeo} from "next-seo";
 
 
 const OutOrder = () => {
@@ -43,48 +44,60 @@ const OutOrder = () => {
     }
 
     return (
-        <CartLayout renderActions={renderAction()}>
+        <>
+            <NextSeo
+                title="ُسفارش برای بیرون کافه"
+                description=""
+                openGraph={{
+                    url: "https://www.coffee-shop.ie/out-order",
+                    title: 'Open Graph Title',
+                    description: 'Open Graph Description',
+                }}
+            />
 
-            {/*time to receive*/}
-            <h5 className="my-4">بازه زمانی ارسال</h5>
-            <div className={cn(styles.roundedBox, "items-center justify-between")}>
-                <p>
-                    {cart.userDeliveryTime ? getTitle(cart.userDeliveryTime) : "بازه زمانی ارسال انتخاب نشده"}
-                </p>
-                <Button onClick={() => setOpenSendTimeDrawer(true)} variant="contained" className="button">
-                    انتخاب بازه زمانی
-                </Button>
-            </div>
+            <CartLayout renderActions={renderAction()}>
 
-            {/*receiver address*/}
-            <h5 className="my-4">آدرس شما</h5>
-            <div className={styles.roundedBox}>
-                <div className={styles.mapBox}/>
-
-                <div className={styles.detailsWrapper}>
+                {/*time to receive*/}
+                <h5 className="my-4">بازه زمانی ارسال</h5>
+                <div className={cn(styles.roundedBox, "items-center justify-between")}>
                     <p>
-                        {address ? address.route : "آدرسی انتخاب نشده"}
+                        {cart.userDeliveryTime ? getTitle(cart.userDeliveryTime) : "بازه زمانی ارسال انتخاب نشده"}
                     </p>
+                    <Button onClick={() => setOpenSendTimeDrawer(true)} variant="contained" className="button">
+                        انتخاب بازه زمانی
+                    </Button>
+                </div>
 
-                    <div className={styles.addressBottomBox}>
-                        <p className="text-gray-700">
-                            شماره تحویل گیرنده :
-                            {" "}
-                            {address?.receiverPhone}
+                {/*receiver address*/}
+                <h5 className="my-4">آدرس شما</h5>
+                <div className={styles.roundedBox}>
+                    <div className={styles.mapBox}/>
+
+                    <div className={styles.detailsWrapper}>
+                        <p>
+                            {address ? address.route : "آدرسی انتخاب نشده"}
                         </p>
-                        <Button onClick={handleOpenAddress} variant="contained" className="button">
-                            تغییر آدرس
-                        </Button>
+
+                        <div className={styles.addressBottomBox}>
+                            <p className="text-gray-700">
+                                شماره تحویل گیرنده :
+                                {" "}
+                                {address?.receiverPhone}
+                            </p>
+                            <Button onClick={handleOpenAddress} variant="contained" className="button">
+                                تغییر آدرس
+                            </Button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <SendTimesDrawer
-                open={openSendTimeDrawer}
-                handleClose={() => setOpenSendTimeDrawer(false)}
-                sendTimes={sendTimes}
-            />
-        </CartLayout>
+                <SendTimesDrawer
+                    open={openSendTimeDrawer}
+                    handleClose={() => setOpenSendTimeDrawer(false)}
+                    sendTimes={sendTimes}
+                />
+            </CartLayout>
+        </>
     );
 };
 

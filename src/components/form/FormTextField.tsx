@@ -49,9 +49,9 @@ const FormTextField: FC<Props> = forwardRef((props, ref) => {
         <div className={`mt-4 w-full ${isDisabled ? "hidden" : ""} ${rootClassName || ""}`}>
             {
                 !dontShowLabel && (
-                    <p className="my-2 text-gray-700">
+                    <label className="my-2 text-gray-700">
                         {title}
-                    </p>
+                    </label>
                 )
             }
             <TextField

@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, MouseEvent} from 'react';
 
 import Image from "next/image";
 
@@ -6,23 +6,23 @@ import {Badge, IconButton, InputAdornment, TextField} from "@mui/material";
 import PersonOutline from "@mui/icons-material/PersonOutline";
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import Search from "@mui/icons-material/Search";
+import {useSession} from "next-auth/react";
 
-import {CartDrawer, LoginDrawer, RenderIf, SearchModal} from "@components";
-import {useUiContext} from "@contexts/UiContext";
+import {CartDrawer, LoginDrawer, ProfileMenu, RenderIf, SearchModal} from "@components";
 import styles from "./styles/Header.module.css"
 import {useRouter} from "next/router";
 import Link from "next/link";
 import {useAppSelector} from "@hooks/redux-hooks";
 
 const Header = () => {
-    // const {isOpenSearch, closeSearch, openSearch} = useUiContext()
+    const {data: session} = useSession()
     const [isOpenSearch, setIsOpenSearch] = useState(false);
     const [openCart, setOpenCart] = useState(false);
     const [openLogin, setOpenLogin] = useState(false);
+    const [profileAnchorEl, setProfileAnchorEl] = useState<null | HTMLElement>(null);
 
     const router = useRouter()
     const cart = useAppSelector(state => state.cart)
-    const isLogin = true
 
     const [text, setText] = useState("");
 
@@ -35,6 +35,14 @@ const Header = () => {
     const handleChange = () => {
         setText("")
         openSearch()
+    }
+
+    const handlePressAccount =  (event: MouseEvent<HTMLButtonElement>) => {
+        if (session) {
+            setProfileAnchorEl(event.currentTarget);
+        } else {
+            setOpenLogin(true)
+        }
     }
 
 
@@ -51,13 +59,13 @@ const Header = () => {
                         </IconButton>
                     </RenderIf>
 
-                    <IconButton size="large" onClick={() => setOpenLogin(true)}>
+                    <IconButton size="large" onClick={handlePressAccount}>
                         <PersonOutline className='icon text-primary'/>
                     </IconButton>
 
                     <IconButton size="large" onClick={() => setOpenCart(true)}>
                         <Badge color="secondary" badgeContent={cart.totalCount}>
-                        <LocalMallIcon sx={{color: "secondary.dark"}} className='icon'/>
+                            <LocalMallIcon sx={{color: "secondary.dark"}} className='icon'/>
                         </Badge>
                     </IconButton>
                 </div>
@@ -95,6 +103,7 @@ const Header = () => {
 
             <CartDrawer open={openCart} handleClose={() => setOpenCart(false)}/>
             <LoginDrawer open={openLogin} handleClose={() => setOpenLogin(false)}/>
+            <ProfileMenu anchorEl={profileAnchorEl} onClose={() => setProfileAnchorEl(null)}/>
         </>
     )
 
