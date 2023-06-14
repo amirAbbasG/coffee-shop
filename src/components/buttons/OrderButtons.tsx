@@ -7,7 +7,6 @@ import Remove from "@mui/icons-material/Remove"
 import AddShoppingCart from "@mui/icons-material/AddShoppingCart";
 
 import {isEmpty} from "@utils/helpers";
-import {errorMessage} from "@libs/toast";
 import {useAppDispatch, useAppSelector} from "@hooks/redux-hooks";
 import {CartItem} from "@custom-types/cart";
 import {addToCart, removeFromCart} from "@store/reducers/cartReducer";

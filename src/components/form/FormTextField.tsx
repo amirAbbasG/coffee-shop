@@ -47,14 +47,15 @@ const FormTextField: FC<Props> = forwardRef((props, ref) => {
 
     return (
         <div className={`mt-4 w-full ${isDisabled ? "hidden" : ""} ${rootClassName || ""}`}>
-            {
-                !dontShowLabel && (
-                    <label className="my-2 text-gray-700">
-                        {title}
-                    </label>
-                )
-            }
+            {/*{*/}
+            {/*    !dontShowLabel && (*/}
+            {/*        <label className="my-2 text-gray-700">*/}
+            {/*            {title}*/}
+            {/*        </label>*/}
+            {/*    )*/}
+            {/*}*/}
             <TextField
+                label={title}
                 inputRef={ref}
                 autoFocus
                 disabled={isDisabled}

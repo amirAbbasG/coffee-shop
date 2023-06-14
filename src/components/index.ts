@@ -8,6 +8,7 @@ export {default as CartLayout} from "@components/layouts/CartLayout"
 export {default as CategoryCard} from "@components/cards/CategoryCard"
 export {default as MenuItemCard} from "@components/cards/MenuItemCard"
 export {default as CartItemCard} from "@components/cards/CartItemCard"
+export {default as CommentCard} from "@components/cards/CommentCard"
 //#endregion
 
 //#region sections

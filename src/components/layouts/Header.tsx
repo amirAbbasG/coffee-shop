@@ -37,7 +37,7 @@ const Header = () => {
         openSearch()
     }
 
-    const handlePressAccount =  (event: MouseEvent<HTMLButtonElement>) => {
+    const handlePressAccount = (event: MouseEvent<HTMLButtonElement>) => {
         if (session) {
             setProfileAnchorEl(event.currentTarget);
         } else {
@@ -50,7 +50,7 @@ const Header = () => {
         <>
             <nav className={styles.topNav} id="top-nav">
                 <Link href="/">
-                    <Image src="/images/logo.png" alt="logo" width={55} height={55}/>
+                    <Image src="/images/icons/logo.png" alt="logo" width={50} height={50}/>
                 </Link>
                 <div>
                     <RenderIf isTrue={!isHome}>
@@ -89,7 +89,12 @@ const Header = () => {
                             ),
                             className: "bg-white",
                             classes: {
-                                input: "cursor-text"
+                                input: "cursor-text",
+                            },
+                            sx: {
+                                "& > fieldset > legend": {
+                                    height: ".6rem"
+                                }
                             }
                         }
                         }

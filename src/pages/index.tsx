@@ -1,17 +1,19 @@
 import {GetStaticProps, InferGetStaticPropsType} from "next";
+import {NextSeo} from "next-seo";
 
-import {Category, MenuShowCase} from "@custom-types/menu";
+import {Category, MenuShowCase, UserComment} from "@custom-types/menu";
 import categoriesData from "@dev-data/categories.json"
 import menuItemsData from "@dev-data/menu-items.json"
 import {getMultipleRandom} from "@utils/helpers";
 import {CategoriesSection, MenuShowCasesSection} from "@components";
-import {Box} from "@mui/system";
-import {NextSeo} from "next-seo";
+import comments from "@dev-data/user-comments.json"
+import UserComments from "@components/sections/UserComments";
 
 
 interface StaticReturnProps {
     categories: Category[],
-    menuShowCases: MenuShowCase[]
+    menuShowCases: MenuShowCase[],
+    userComments: UserComment[]
 }
 
 // get static props with revalidate
@@ -38,13 +40,14 @@ export const getStaticProps: GetStaticProps<StaticReturnProps> = async () => {
     return {
         props: {
             categories,
-            menuShowCases
+            menuShowCases,
+            userComments: comments
         },
         revalidate: 4 * 60 * 60
     }
 }
 
-export default function Home({categories, menuShowCases}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({categories, menuShowCases, userComments}: InferGetStaticPropsType<typeof getStaticProps>) {
 
     const sortedShowCases = menuShowCases.sort(function (x, y) {
         return x.isOffer ? -1 : y.isOffer ? 1 : 0;
@@ -70,6 +73,8 @@ export default function Home({categories, menuShowCases}: InferGetStaticPropsTyp
                     ))
                 }
             </div>
+
+            <UserComments comments={userComments}/>
         </>
     )
 }

@@ -1,0 +1,45 @@
+import React, {FC} from 'react';
+
+import Link from "next/link";
+
+import { EffectCards } from "swiper";
+import {Swiper, SwiperSlide} from "swiper/react";
+import AddCommentIcon from '@mui/icons-material/AddComment';
+
+import {UserComment} from "@custom-types/menu";
+import {CommentCard} from "@components";
+import {Button} from "@mui/material";
+
+interface Props {
+    comments: UserComment[]
+}
+
+const UserComments: FC<Props> = ({comments}) => {
+    return (
+        <section className="mb-8 mt-14 flex flex-col items-center gap-y-4">
+            <h1 className="font-bold text-lg">
+                نظرهای کاربران
+            </h1>
+
+            <Swiper
+                effect={"cards"}
+                grabCursor={true}
+                modules={[EffectCards]}
+                className="w-52 h-56"
+            >
+                {
+                    comments?.map(comment => (
+                        <SwiperSlide key={comment.id} className="rounded-lg">
+                            <CommentCard comment={comment}/>
+                        </SwiperSlide>
+                    ))
+                }
+            </Swiper>
+            <Button variant="contained" className="button w-52" startIcon={<AddCommentIcon className="text-2xl ml-2"/>}>
+                افزودن نظر
+            </Button>
+        </section>
+    );
+};
+
+export default UserComments;

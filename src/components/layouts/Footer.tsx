@@ -12,7 +12,7 @@ const Footer: FC = () => {
                 <div className={styles.root}>
 
                     <div className={styles.rightBox}>
-                        <Image src="/images/logo.png" alt="logo" width={75} height={75}/>
+                        <Image src="/images/icons/logo.png" alt="logo" width={75} height={75}/>
 
                         <div className={styles.menu}>
                             <Link href="#" className={styles.menuItem}> تماس با ما </Link>

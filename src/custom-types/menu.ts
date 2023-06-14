@@ -1,3 +1,9 @@
+export interface UserComment {
+    id: string,
+    user: string,
+    text: string,
+    score: number
+}
 
 export interface Category {
     id: string,
@@ -18,7 +24,8 @@ export interface MenuItem {
     price: number,
     discountPercentage: number,
     discountedPrice: number,
-    category: ItemCategory
+    category: ItemCategory,
+    comments?: UserComment[]
 }
 
 

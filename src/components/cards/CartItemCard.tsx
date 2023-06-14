@@ -6,7 +6,7 @@ import {ItemPrice, OrderButtons} from "@components";
 
 const CartItemCard: FC<{ item: CartItem }> = ({item}) => {
     return (
-        <div className="col gap-y-3 border-b border-primary-light px-2 py-4">
+        <article className="col gap-y-3 border-b border-primary-light px-2 py-4">
             <div className="flex items-center justify-between">
                 <div className="flex gap-x-3 items-center">
                     <Image
@@ -32,7 +32,7 @@ const CartItemCard: FC<{ item: CartItem }> = ({item}) => {
                 />
                 <OrderButtons item={item}/>
             </div>
-        </div>
+        </article>
     );
 };
 

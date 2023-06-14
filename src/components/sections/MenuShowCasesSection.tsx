@@ -2,7 +2,6 @@ import {FC} from "react";
 
 import Link from "next/link"
 
-import {useTheme, useMediaQuery} from "@mui/material";
 import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";
 import cn from "classnames";

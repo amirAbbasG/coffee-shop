@@ -112,16 +112,32 @@ let theme = createTheme({
                     backgroundColor: primary.DEFAULT
                 }
             }
-        }
-        // MuiOutlinedInput: {
-        //   styleOverrides: {
-        //     root: {
-        //       "&.Mui-focused": {
-        //         "& > fieldset": {borderColor: '#148D8D !important'}
-        //       }
-        //     }
-        //   }
-        // },
+        },
+        MuiOutlinedInput: {
+            styleOverrides: {
+                root: {
+                    "& > fieldset > legend": {
+                        textAlign: "right",
+                        fontSize: ".75rem",
+                        height: "1rem"
+                    }
+                }
+            }
+        },
+        MuiInputLabel: {
+            styleOverrides: {
+                root: {
+                    color: "#808080",
+                    left: "unset",
+                    right: "1.75rem",
+                    transformOrigin: "right",
+                    fontSize: "1rem",
+                },
+                asterisk: {
+                    color: "red"
+                },
+            },
+        },
         // MuiInputBase: {
         //   styleOverrides: {
         //     root: {
