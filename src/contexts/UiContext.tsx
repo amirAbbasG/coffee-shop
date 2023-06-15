@@ -4,29 +4,48 @@ import {ChildrenProps} from "@custom-types/props";
 
 export const actions = {
     OPEN_SEARCH: "OPEN_SEARCH",
-    CLOSE_SEARCH: "CLOSE_SEARCH"
+    CLOSE_SEARCH: "CLOSE_SEARCH",
+    OPEN_ADD_COMMENT: "OPEN_ADD_COMMENT",
+    CLOSE_ADD_COMMENT: "CLOSE_ADD_COMMENT",
 }
 
-interface StateModifiers {
-    openSearch: () => void,
-    closeSearch: () => void
-}
+// interface StateModifiers {
+//     openSearch: () => void,
+//     closeSearch: () => void
+//     openAddComment: (addId: string | null) => void,
+//     closeAddComment: () => void
+// }
 
 interface InitialValues {
-    isOpenSearch: boolean
+    isOpenSearch: boolean,
+    addComment: {
+        isOpen: boolean,
+        addId: string | null
+    }
 }
 
-const stateModifiers: StateModifiers = {
+const stateModifiers = {
     openSearch: () => {},
-    closeSearch: () => {}
+    closeSearch: () => {},
+    openAddComment: (addId: string | null) => {},
+    closeAddComment: () => {}
+
 }
+
+type StateModifiers = typeof stateModifiers
+
 
 const initialValues: InitialValues = {
-    isOpenSearch: false
+    isOpenSearch: false,
+    addComment: {
+        isOpen: false,
+        addId: null
+    }
 }
 
 interface Action {
-    type:  string
+    type:  string,
+    payload?: any
 }
 
 
@@ -42,6 +61,24 @@ const uiReducer = (state: InitialValues, action: Action) => {
             return {
                 ...state,
                 isOpenSearch: false
+            }
+        }
+        case actions.OPEN_ADD_COMMENT : {
+            return {
+                ...state,
+                addComment: {
+                    isOpen: true,
+                    addId: action.payload
+                }
+            }
+        }
+        case actions.CLOSE_ADD_COMMENT : {
+            return {
+                ...state,
+                addComment: {
+                    isOpen: false,
+                    addId: null
+                }
             }
         }
         default:
@@ -61,12 +98,16 @@ export const UiContextProvider: FC<ChildrenProps> = ({children}) => {
 
     const openSearch = () =>  dispatch({type: actions.OPEN_SEARCH})
     const closeSearch = () =>  dispatch({type: actions.CLOSE_SEARCH})
+    const openAddComment = (addId: string | null) =>  dispatch({type: actions.OPEN_ADD_COMMENT, payload: addId})
+    const closeAddComment = () =>  dispatch({type: actions.CLOSE_ADD_COMMENT})
 
     const providerValue = useMemo(() => ({
         ...state,
         openSearch,
-        closeSearch
-    }), [state.isOpenSearch]);
+        closeSearch,
+        openAddComment,
+        closeAddComment
+    }), [state.isOpenSearch, state.addComment]);
 
     return (
         <UiContext.Provider value={providerValue}>
@@ -76,6 +117,5 @@ export const UiContextProvider: FC<ChildrenProps> = ({children}) => {
 }
 
 export const useUiContext = () => {
-    const context = useContext(UiContext);
-    return context
+    return useContext(UiContext);
 }

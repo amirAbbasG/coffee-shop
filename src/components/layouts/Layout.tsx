@@ -9,6 +9,11 @@ import Header from "./Header";
 import Footer from "./Footer";
 import {useRouter} from "next/router";
 import {RenderIf} from "@components";
+import dynamic from "next/dynamic";
+
+const AddCommentDialog = dynamic(() => import("@components/modals/AddCommentDialog"), {
+    ssr: false
+})
 
 
 const Layout: FC<ChildrenProps> = ({children}) => {
@@ -24,6 +29,7 @@ const Layout: FC<ChildrenProps> = ({children}) => {
             <RenderIf isTrue={router.pathname.includes("/item")}>
                 <div className="h-20"/>
             </RenderIf>
+            <AddCommentDialog/>
         </div>
     );
 };

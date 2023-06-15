@@ -1,6 +1,7 @@
 import {useState, MouseEvent} from 'react';
 
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
 import {Badge, IconButton, InputAdornment, TextField} from "@mui/material";
 import PersonOutline from "@mui/icons-material/PersonOutline";
@@ -8,11 +9,23 @@ import LocalMallIcon from '@mui/icons-material/LocalMall';
 import Search from "@mui/icons-material/Search";
 import {useSession} from "next-auth/react";
 
-import {CartDrawer, LoginDrawer, ProfileMenu, RenderIf, SearchModal} from "@components";
+import {RenderIf, SearchModal} from "@components";
 import styles from "./styles/Header.module.css"
 import {useRouter} from "next/router";
 import Link from "next/link";
 import {useAppSelector} from "@hooks/redux-hooks";
+const CartDrawer = dynamic(() => import("@components/modals/CartDrawer"), {
+    ssr: false
+})
+const LoginDrawer = dynamic(() => import("@components/modals/LoginDrawer"), {
+    ssr: false
+})
+const ProfileMenu = dynamic(() => import("@components/modals/ProfileMenu"), {
+    ssr: false
+})
+
+
+
 
 const Header = () => {
     const {data: session} = useSession()

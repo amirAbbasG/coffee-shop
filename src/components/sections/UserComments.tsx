@@ -9,12 +9,17 @@ import AddCommentIcon from '@mui/icons-material/AddComment';
 import {UserComment} from "@custom-types/menu";
 import {CommentCard} from "@components";
 import {Button} from "@mui/material";
+import {useUiContext} from "@contexts/UiContext";
 
 interface Props {
-    comments: UserComment[]
+    comments: UserComment[],
+    addId?: string
 }
 
-const UserComments: FC<Props> = ({comments}) => {
+const UserComments: FC<Props> = ({comments, addId= null}) => {
+    const {openAddComment} = useUiContext()
+
+
     return (
         <section className="mb-8 mt-14 flex flex-col items-center gap-y-4">
             <h1 className="font-bold text-lg">
@@ -35,7 +40,12 @@ const UserComments: FC<Props> = ({comments}) => {
                     ))
                 }
             </Swiper>
-            <Button variant="contained" className="button w-52" startIcon={<AddCommentIcon className="text-2xl ml-2"/>}>
+            <Button
+                variant="contained"
+                className="button w-52"
+                startIcon={<AddCommentIcon className="text-2xl ml-2"/>}
+                onClick={() => openAddComment(addId)}
+            >
                 افزودن نظر
             </Button>
         </section>

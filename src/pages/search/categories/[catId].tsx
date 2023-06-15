@@ -1,7 +1,9 @@
 import {FC, useState} from 'react';
 
+import {useRouter} from "next/router";
 import {GetServerSideProps, InferGetServerSidePropsType} from "next";
 
+import {NextSeo} from "next-seo";
 import {ParsedUrlQuery} from "querystring";
 import TuneIcon from '@mui/icons-material/Tune';
 import Grid2 from "@mui/material/Unstable_Grid2";
@@ -10,10 +12,11 @@ import {Button} from "@mui/material";
 import {Category, MenuItem} from "@custom-types/menu";
 import menuItems from "@dev-data/menu-items.json"
 import categoriesData from "@dev-data/categories.json"
-import {FilterItemsDrawer, MenuItemCard} from "@components";
+import {MenuItemCard} from "@components";
 import SortProductsSelect from "@components/modals/SortItemsSelect";
-import {NextSeo} from "next-seo";
-import {useRouter} from "next/router";
+import dynamic from "next/dynamic";
+
+const FilterItemsDrawer = dynamic(() => import("@components/modals/FilterItemsDrawer"))
 
 
 interface ServerSideProps {

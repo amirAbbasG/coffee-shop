@@ -7,13 +7,14 @@ import {ToastContainer} from "react-toastify";
 import {Provider} from "react-redux";
 import {SessionProvider} from "next-auth/react";
 import {DefaultSeo} from "next-seo";
+import NextNProgress from "nextjs-progressbar";
 
 import store from "@store";
 import {UiContextProvider} from "@contexts/UiContext";
 import {Layout} from "@components";
 import seoConfig from "../../next-seo.config"
 
-import theme from "@styles/theme";
+import theme, {primary} from "@styles/theme";
 import "react-toastify/dist/ReactToastify.css"
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -29,6 +30,7 @@ export default function App({Component, pageProps}: AppProps) {
             <Head>
                 <meta name="viewport" content="initial-scale=1, width=device-width"/>
             </Head>
+            <NextNProgress color={primary.DEFAULT}/>
             <StyledEngineProvider injectFirst>
                 <ThemeProvider theme={theme}>
                     <CssBaseline/>

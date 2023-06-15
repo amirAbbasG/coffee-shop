@@ -4,7 +4,7 @@ import resolveConfig from "tailwindcss/resolveConfig"
 const tailwindConfig = require("../../tailwind.config")
 
 const {theme: {colors}} = resolveConfig(tailwindConfig)
-const {primary, secondary, gray} = colors
+export const {primary, secondary, gray} = colors
 const rootElement = () => document.getElementById("__next");
 
 let theme = createTheme({

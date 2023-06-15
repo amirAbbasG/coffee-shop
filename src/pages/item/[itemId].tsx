@@ -128,7 +128,7 @@ const ItemDetails: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({menuIt
                 </RenderIf>
 
                 <RenderIf isTrue={!!menuItem}>
-                    <UserComments comments={menuItem?.comments!}/>
+                    <UserComments comments={menuItem?.comments!} addId={menuItem?.id}/>
                 </RenderIf>
             </div>
 
