@@ -3,11 +3,14 @@ import {FC} from 'react';
 import {useRouter} from "next/router";
 
 import {Button, Drawer} from "@mui/material";
+import {motion} from "framer-motion";
 
 import {ModalProps} from "@custom-types/props";
 import {useAppSelector} from "@hooks/redux-hooks";
 import {CartItemCard} from "@components";
 import {separatePrice} from "@utils/helpers";
+import styles from "@components/modals/styles/FilterItemDrawer.module.css";
+import {ulVariants} from "@components/modals/styles/motion-variants";
 
 
 const CartDrawer: FC<ModalProps> = ({open, handleClose}) => {
@@ -18,6 +21,7 @@ const CartDrawer: FC<ModalProps> = ({open, handleClose}) => {
         await router.push("/finalize-cart")
         handleClose()
     }
+
 
     return (
         <Drawer
@@ -33,14 +37,19 @@ const CartDrawer: FC<ModalProps> = ({open, handleClose}) => {
             <h5 className=" py-3 mb-5 text-center text-white font-bold tracking-wide bg-secondary sticky top-0 z-10">
                 {`سبد خرید (${cart.totalCount} عدد)`}
             </h5>
-            <div className="col gap-y-2 p-4">
+            <motion.ul
+                className="col gap-y-2 p-4"
+                variants={ulVariants}
+                initial="closed"
+                animate={open ? "open" : "closed"}
+            >
 
                 {
                     cart?.items?.map(i => (
                         <CartItemCard item={i} key={i.id}/>
                     ))
                 }
-            </div>
+            </motion.ul>
             <div className="flex-grow"/>
             <div className="flex justify-between p-3 bg-secondary-light sticky bottom-0 z-10">
                 <div>

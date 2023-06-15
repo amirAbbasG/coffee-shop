@@ -5,6 +5,7 @@ import {useRouter} from "next/router";
 import {Dialog, DialogContent, TextField, InputAdornment, DialogContentText, IconButton} from "@mui/material";
 import Search from "@mui/icons-material/Search";
 import Close from "@mui/icons-material/Close";
+import {motion} from "framer-motion";
 
 import styles from "./styles/SearchModal.module.css"
 import {isEmpty} from "@utils/helpers";
@@ -99,9 +100,19 @@ const SearchDialog: FC<ModalProps> = ({open, handleClose}) => {
                     }}
                 />
                 {isEmpty(search) ? (
-                    <DialogContentText className={styles.helpText}>
-                        عبارت مورد نظر خود را وارد کنید
-                    </DialogContentText>
+                    <motion.p
+                        className={styles.helpText}
+                        initial={{maxWidth: "10ch",}}
+                        animate={{
+                            maxWidth: "50ch",
+                            transition: {
+                                delay: 0.1,
+                                duration: 1.8
+                            }
+                        }}
+                    >
+                        عبارت مورد نظر خود را وارد کنید...
+                    </motion.p>
                 ) : (
                     <LoadingLayout loaded={!isFetching}>
 

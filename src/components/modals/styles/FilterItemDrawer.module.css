@@ -15,7 +15,7 @@
 }
 
 .cat {
-    @apply flex items-center relative gap-x-5 mb-5 bg-primary-light bg-opacity-60 rounded-lg py-2 pr-14 text-sub
+    @apply flex items-center relative gap-x-5 bg-primary-light bg-opacity-60 rounded-lg py-2 pr-14 text-sub
 }
 
 .catImgWrapper {

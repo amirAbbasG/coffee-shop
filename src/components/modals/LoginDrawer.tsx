@@ -1,18 +1,20 @@
 import {FC, useState} from 'react';
 
+import Image from "next/image";
+
 import {Button, Drawer, IconButton} from "@mui/material";
 import {Form, Formik, FormikHelpers} from "formik";
 import GoogleIcon from '@mui/icons-material/Google';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CloseIcon from '@mui/icons-material/Close';
+import {motion} from "framer-motion";
+import {signIn} from "next-auth/react";
+import Countdown, {CountdownRenderProps} from "react-countdown";
 
 import {ModalProps} from "@custom-types/props";
-import {errorMessage, showError, successMessage} from "@libs/toast";
+import { successMessage} from "@libs/toast";
 import {RenderIf, FormTextField, VerificationCodeInput, SubmitButton} from "@components";
-import Countdown, {CountdownRenderProps} from "react-countdown";
 import {validateAction} from "@validators/auth-validator";
-import {signIn} from "next-auth/react";
-import Image from "next/image";
 
 const authActions = {
     loginType: "loginType",
@@ -95,8 +97,8 @@ const LoginDrawer: FC<ModalProps> = ({open, handleClose}) => {
         }
     };
 
-    const handleLoginGoogle = () => {
-        signIn("google", {callbackUrl: "http://localhost:3000"})
+    const handleLoginGoogle = async () => {
+        await signIn("google")
     }
 
     const handleBack = () => {
@@ -142,7 +144,15 @@ const LoginDrawer: FC<ModalProps> = ({open, handleClose}) => {
             >
                 <Form className="col h-full justify-between">
                     <RenderIf isTrue={isLoginType}>
-                        <Image src="/images/logo.png" alt="logo" width={100} height={100} className="mx-auto my-5"/>
+                        <motion.div
+                            animate={{
+                                scale: [1, 1.5, 1.5, 1, 1],
+                                rotate: [0, 0, 270, 270, 0],
+                            }}
+                            transition={{duration: 1.5}}
+                            >
+                        <Image src="/images/logos/logo.png" alt="logo" width={100} height={100} className="mx-auto my-5"/>
+                        </motion.div>
                         <Button
                             className="py-2"
                             onClick={handleLoginGoogle}

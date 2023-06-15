@@ -63,7 +63,7 @@ const Header = () => {
         <>
             <nav className={styles.topNav} id="top-nav">
                 <Link href="/">
-                    <Image src="/images/icons/logo.png" alt="logo" width={50} height={50}/>
+                    <Image src="/images/logos/logo.png" alt="logo" width={50} height={50}/>
                 </Link>
                 <div>
                     <RenderIf isTrue={!isHome}>

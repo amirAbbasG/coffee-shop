@@ -1,9 +1,13 @@
 import React from 'react';
+
+import {useRouter} from "next/router";
+
+import {Button} from "@mui/material";
+import {NextSeo} from "next-seo";
+import {motion} from "framer-motion";
+
 import {useAppSelector} from "@hooks/redux-hooks";
 import {CartItemCard, CartLayout} from "@components";
-import {Button} from "@mui/material";
-import {useRouter} from "next/router";
-import {NextSeo} from "next-seo";
 
 const FinalizeCart = () => {
     const router = useRouter()
@@ -43,12 +47,17 @@ const FinalizeCart = () => {
                 <h5 className="mt-8 mb-2 text-center font-bold text-secondary-dark">
                     آیتم های سبد خرید
                 </h5>
+                <motion.ul
+                    initial="closed"
+                    animate="open"
+                >
 
                 {
                     cart?.items?.map(i => (
                         <CartItemCard item={i} key={i.id}/>
                     ))
                 }
+                </motion.ul>
             </CartLayout>
         </>
     );

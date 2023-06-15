@@ -3,6 +3,8 @@ import {FC} from 'react';
 import Link from "next/link";
 import Image from "next/image";
 
+import {motion} from "framer-motion";
+
 import {MenuItem} from "@custom-types/menu";
 import styles from "./styles/MenuItemCard.module.css"
 import {ItemPrice} from "@components";
@@ -13,7 +15,11 @@ interface Props {
 
 const MenuItemCard: FC<Props> = ({menuItem}) => {
     return (
-        <article className={styles.root}>
+        <motion.article
+            className={styles.root}
+            whileHover={{scale: 1.04}}
+            whileTap={{scale: 0.9}}
+        >
             <Link href={`/item/${menuItem.id}`} className="card-link"/>
             <div className={styles.imgWrapper}>
                 <Image src={`/images/menu-items/${menuItem.pic}`} alt={menuItem.title} fill className="object-center"/>
@@ -31,7 +37,7 @@ const MenuItemCard: FC<Props> = ({menuItem}) => {
                 />
             </div>
 
-        </article>
+        </motion.article>
     );
 };
 

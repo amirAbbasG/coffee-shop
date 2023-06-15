@@ -1,14 +1,17 @@
 import {FC, useState} from 'react';
 
-import {Drawer} from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
+
+import {motion} from "framer-motion";
+import {Drawer} from "@mui/material";
 
 import {FilterItem, PriceRangeSlider, RenderIf} from "@components";
 import styles from "./styles/FilterItemDrawer.module.css"
 import {ModalProps} from "@custom-types/props";
 import {Category} from "@custom-types/menu";
 import {isEmpty} from "@utils/helpers";
-import Link from "next/link";
+import {liVariants, ulVariants} from "@components/modals/styles/motion-variants";
 
 
 type Props = ModalProps & {
@@ -17,6 +20,8 @@ type Props = ModalProps & {
 const FilterItemsDrawer: FC<Props> = ({open, handleClose, categories}) => {
     const [justOffer, setJustOffer] = useState(false);
     const [justDiscounted, setJustDiscounted] = useState(false);
+
+
 
     return (
         <Drawer
@@ -32,31 +37,44 @@ const FilterItemsDrawer: FC<Props> = ({open, handleClose, categories}) => {
             <div className={styles.header}>
                 فیلتر ها
             </div>
-            <div className={styles.root}>
+            <motion.div
+                initial="closed"
+                animate={open ? "open" : "closed"}
+                className={styles.root}
+            >
                 {/*filter by category*/}
                 <RenderIf isTrue={!isEmpty(categories)}>
-                    <h4>
+                    <h4 className="mb-5">
                         فیلتر دسته بندی
                     </h4>
-                    <section>
+                    <motion.ul variants={ulVariants} className="mb-5">
                         {
                             categories?.map(c => (
-                                <Link href={`/search/categories/${c.id}?catTitle=${c.title}`} key={c.id} className={styles.cat}>
-                                    <div className={styles.catImgWrapper}>
-                                        <Image src={`/images/categories/${c.pic}`} alt={c.title} width={35} height={35}/>
-                                    </div>
-                                    <p>{c.title}</p>
-                                </Link>
+                                <motion.li
+                                    key={c.id} className="mb-5"
+                                    variants={liVariants}
+                                    whileHover={{scale: 1.04}}
+                                    whileTap={{scale: 0.95}}
+                                >
+                                    <Link href={`/search/categories/${c.id}?catTitle=${c.title}`}
+                                          className={styles.cat}>
+                                        <div className={styles.catImgWrapper}>
+                                            <Image src={`/images/categories/${c.pic}`} alt={c.title} width={35}
+                                                   height={35}/>
+                                        </div>
+                                        <p>{c.title}</p>
+                                    </Link>
+                                </motion.li>
                             ))
                         }
-                    </section>
+                    </motion.ul>
                 </RenderIf>
 
                 {/*filter by options*/}
-                <h4>
-                    فیلتر تخفیف
-                </h4>
-                <section className="space-y-4">
+                <motion.section className="space-y-4" variants={liVariants}>
+                    <h4>
+                        فیلتر تخفیف
+                    </h4>
                     <FilterItem
                         value={justDiscounted}
                         onToggle={e => setJustDiscounted(e.target.checked)}
@@ -67,16 +85,18 @@ const FilterItemsDrawer: FC<Props> = ({open, handleClose, categories}) => {
                         onToggle={e => setJustOffer(e.target.checked)}
                         title="آیتم های پیشنهاد ویژه"
                     />
-                </section>
+                </motion.section>
 
                 {/*filter by price*/}
-                <h4>
-                    فیلتر قیمت
-                </h4>
-                <PriceRangeSlider onSubmit={() => {
-                }}/>
+                <motion.section variants={liVariants}>
+                    <h4>
+                        فیلتر قیمت
+                    </h4>
+                    <PriceRangeSlider onSubmit={() => {
+                    }}/>
+                </motion.section>
 
-            </div>
+            </motion.div>
         </Drawer>
     );
 };
