@@ -1,27 +1,26 @@
 .root {
     @apply flex flex-col md:flex-row items-center md:justify-between md:items-start
-    py-10 max-w-6xl mx-auto gap-y-6 md:gap-y-0
-
+    py-10 max-w-6xl mx-auto gap-y-6 md:gap-y-0;
 }
 
 .rightBox {
-    @apply flex flex-col gap-y-8 md:gap-y-4 items-start
+    @apply flex flex-col gap-y-8 md:gap-y-4 items-start;
 }
 
 .leftBox {
-    @apply flex flex-col items-start justify-between space-y-4 text-gray-500
+    @apply flex flex-col items-start justify-between space-y-4 text-gray-500;
 }
 
 .menu {
     @apply flex flex-col md:flex-row items-center
     gap-y-5 md:gap-y-0 md:gap-x-4  md:ml-3
-    font-bold text-white
+    font-bold text-white;
 }
 
 .menuItem {
-    @apply hover:border-b-2 border-blue-50 duration-100 font-normal
+    @apply hover:border-b-2 border-blue-50 duration-100 font-normal;
 }
 
 .socialMedias {
-    @apply flex items-center justify-center mx-auto gap-x-4 md:justify-end md:mx-0
+    @apply flex items-center justify-center mx-auto gap-x-4 md:justify-end md:mx-0;
 }

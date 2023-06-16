@@ -1,7 +1,6 @@
 import {useState, useEffect, FC} from "react";
 
 import {Button, Slider} from "@mui/material";
-import {Box, styled} from "@mui/system";
 
 import {separatePrice} from "@utils/helpers";
 

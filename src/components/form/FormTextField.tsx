@@ -1,7 +1,7 @@
 import {FC, forwardRef, ChangeEvent} from "react";
 
 import {useFormikContext, getIn} from "formik";
-import {TextField, TextFieldProps, Typography} from "@mui/material";
+import {TextField, TextFieldProps} from "@mui/material";
 
 
 type Props = TextFieldProps & {
@@ -25,7 +25,7 @@ const FormTextField: FC<Props> = forwardRef((props, ref) => {
         maxLength,
         isDisabled = false,
         isReadOnly = false,
-        dontShowLabel = false,
+        // dontShowLabel = false,
         variant = "outlined",
         ...otherProps
     } = props

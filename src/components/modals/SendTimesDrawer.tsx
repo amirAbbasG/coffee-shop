@@ -56,7 +56,6 @@ const SendTimesDrawer: FC<Props> = ({open, handleClose, sendTimes}) => {
 
     const handleChange = async (event: ChangeEvent<HTMLInputElement>) => {
         try {
-            const values = event.target.value.split(",");
             dispatch(setDeliveryTime(event.target.value));
             successMessage("بازه زمانی ارسال موردنظر انتخاب شد");
         } catch (e) {

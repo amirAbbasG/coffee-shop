@@ -9,7 +9,6 @@ import {ModalProps} from "@custom-types/props";
 import {useAppSelector} from "@hooks/redux-hooks";
 import {CartItemCard} from "@components";
 import {separatePrice} from "@utils/helpers";
-import styles from "@components/modals/styles/FilterItemDrawer.module.css";
 import {ulVariants} from "@components/modals/styles/motion-variants";
 
 

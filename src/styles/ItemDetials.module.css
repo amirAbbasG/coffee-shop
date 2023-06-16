@@ -1,5 +1,5 @@
 .root {
-    @apply flex flex-col
+    @apply flex flex-col;
 }
 
 .infoBox {
@@ -7,9 +7,9 @@
 }
 
 .detailsWrapper {
-    @apply p-2 space-y-5 w-full md:w-1/2
+    @apply p-2 space-y-5 w-full md:w-1/2;
 }
 
 .footer {
-    @apply flex justify-between fixed inset-x-0 bottom-0 p-4 bg-secondary-light shadow-lg shadow-secondary z-50
+    @apply flex justify-between fixed inset-x-0 bottom-0 p-4 bg-secondary-light shadow-lg shadow-secondary z-50;
 }

@@ -33,7 +33,7 @@ a {
 
 @layer base {
     h1 {
-        @apply text-4xl
+        @apply text-4xl;
     }
 
     h2 {
@@ -41,13 +41,13 @@ a {
     }
 
     h3 {
-        @apply text-2xl
+        @apply text-2xl;
     }
     h4 {
-        @apply text-xl
+        @apply text-xl;
     }
     h5 {
-        @apply text-lg
+        @apply text-lg;
     }
 }
 
@@ -75,7 +75,7 @@ a {
     }
 
     .icon {
-        @apply text-3xl font-bold
+        @apply text-3xl font-bold;
     }
     .hide-scrollbar {
         &::-webkit-scrollbar {
@@ -94,10 +94,10 @@ a {
         @apply absolute inset-0 z-[1] hover:bg-primary-light hover:bg-opacity-20 duration-300;
     }
     .slider-value {
-        @apply p-2 bg-primary bg-opacity-40 text-white text-center w-1/2 rounded-lg
+        @apply p-2 bg-primary bg-opacity-40 text-white text-center w-1/2 rounded-lg;
     }
     .button {
-        @apply bg-primary hover:bg-opacity-80 duration-300 px-4 py-3
+        @apply bg-primary hover:bg-opacity-80 duration-300 px-4 py-3;
     }
 }
 
@@ -117,7 +117,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 #pwaPrompt {
-    display: none
+    display: none;
 }
 
 /* width */
@@ -149,13 +149,13 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .swiper-slide-thumb-active {
-   @apply !border-primary
+   @apply !border-primary;
 }
 
 
 
 @media (display-mode: browser) {
     #pwaPrompt {
-        display: flex
+        display: flex;
     }
 }

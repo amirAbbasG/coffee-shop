@@ -3,7 +3,6 @@
     gap-y-3 p-4 w-52 h-56
     rounded-lg border-[1.5px] border-primary-light
     bg-primary bg-opacity-95 backdrop-blur-3xl text-white text-center;
-    //background: linear-gradient(to right bottom, #ffffff50, #004E3455);
 }
 
 .user {

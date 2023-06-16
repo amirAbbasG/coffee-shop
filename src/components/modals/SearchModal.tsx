@@ -2,7 +2,7 @@ import React, {useState, memo, useEffect, FC, KeyboardEvent} from "react";
 
 import {useRouter} from "next/router";
 
-import {Dialog, DialogContent, TextField, InputAdornment, DialogContentText, IconButton} from "@mui/material";
+import {Dialog, DialogContent, TextField, InputAdornment, IconButton} from "@mui/material";
 import Search from "@mui/icons-material/Search";
 import Close from "@mui/icons-material/Close";
 import {motion} from "framer-motion";

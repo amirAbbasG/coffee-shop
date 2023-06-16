@@ -1,5 +1,5 @@
 .roundedBox {
-    @apply flex p-4 gap-x-4 mb-12 border border-primary rounded-lg
+    @apply flex p-4 gap-x-4 mb-12 border border-primary rounded-lg;
 }
 
 .mapBox {
@@ -10,9 +10,9 @@
 }
 
 .detailsWrapper {
-    @apply flex flex-col justify-center gap-y-5 flex-grow
+    @apply flex flex-col justify-center gap-y-5 flex-grow;
 }
 
 .addressBottomBox {
-    @apply flex flex-col md:flex-row space-y-5 md:space-y-0 items-start md:items-center justify-between
+    @apply flex flex-col md:flex-row space-y-5 md:space-y-0 items-start md:items-center justify-between;
 }

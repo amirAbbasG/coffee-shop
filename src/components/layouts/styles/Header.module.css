@@ -1,6 +1,6 @@
 
 .textFiled {
-    @apply w-[94%] sm:w-4/5 md:w-3/4 lg:w-1/2 mx-auto
+    @apply w-[94%] sm:w-4/5 md:w-3/4 lg:w-1/2 mx-auto;
 }
 
 .topNav {

@@ -20,7 +20,7 @@ interface Props {
 }
 
 const MenuShowCaseSection: FC<Props> = ({menuShowCase, className}) => {
-    const {title, titleColor, bgColor, items, url, isOffer} = menuShowCase
+    const {title, items, url, isOffer} = menuShowCase
 
     const {isXs, isSm, isMd, isLg, isXl, isDownXs} = useMediaBreakpoints()
     let showCount = 1.5;

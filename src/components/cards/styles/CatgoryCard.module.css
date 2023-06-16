@@ -7,5 +7,5 @@
 }
 
 .img {
-    @apply absolute -top-5
+    @apply absolute -top-5;
 }

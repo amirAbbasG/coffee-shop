@@ -2,16 +2,16 @@
 .swiperBtn {
     @apply hidden lg:block absolute top-1/2 -translate-y-1/2 p-1 rounded-lg z-10
     bg-primary-light bg-opacity-30 hover:bg-opacity-75 duration-200 backdrop-blur-sm text-white
-    border border-white
+    border border-white;
 
 }
 
 .left {
-    @apply -left-2
+    @apply -left-2;
 }
 
 .right {
-    @apply -right-2
+    @apply -right-2;
 }
 
 .titleWrapper {
@@ -19,5 +19,5 @@
 }
 
 .isOffer {
-    @apply bg-primary rounded-lg p-0 lg:p-5 pb-10 text-white
+    @apply bg-primary rounded-lg p-0 lg:p-5 pb-10 text-white;
 }

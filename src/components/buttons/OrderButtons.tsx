@@ -18,7 +18,6 @@ interface Props {
 const OrderButtons: FC<Props> = ({item}) => {
     const dispatch = useAppDispatch();
 
-    const account = {}
     const cart = useAppSelector(state => state.cart)
 
     const itemInCart = cart?.items?.find((i) => i.id === item.id);

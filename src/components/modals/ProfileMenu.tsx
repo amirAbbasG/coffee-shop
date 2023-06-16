@@ -1,4 +1,4 @@
-import {useRouter} from "next/router";
+// import {useRouter} from "next/router";
 
 import {
     Menu,
@@ -22,10 +22,9 @@ interface Props {
 
 const ProfileMenu: FC<Props> = ({onClose, anchorEl}) => {
     const open = Boolean(anchorEl);
-    const router = useRouter();
+    // const router = useRouter();
 
     const {data: session} = useSession()
-    console.log(session)
 
     //#region exit account
     const exitAccount = async () => {

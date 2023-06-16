@@ -20,7 +20,7 @@ const apiMiddleware: Middleware<{}, RootState> =
                     onError,
                     headers,
                     payloadData,
-                    authorization,
+                    // authorization,
                 } = action.payload;
 
                 if (onStart) dispatch({type: onStart});

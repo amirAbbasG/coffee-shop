@@ -1,4 +1,4 @@
 .main {
-    @apply p-2 lg:p-6 lg:p-10 mx-auto overflow-x-hidden flex-grow w-full;
+    @apply p-2 lg:p-6 xl:p-10 mx-auto overflow-x-hidden flex-grow w-full;
     max-width: 1366px;
 }

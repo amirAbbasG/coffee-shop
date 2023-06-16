@@ -30,6 +30,7 @@ const LoginDrawer: FC<ModalProps> = ({open, handleClose}) => {
     const loginUser = async (number: string) => {
         try {
             setAction(authActions.verifyCode);
+            console.log(number)
         } catch (error) {
             // showError(error);
         }
@@ -39,6 +40,7 @@ const LoginDrawer: FC<ModalProps> = ({open, handleClose}) => {
     //#region send code for verify number
     const verifyCode = async (code: string) => {
         try {
+            console.log(code)
             handleClose()
         } catch (error) {
             // showError(error);

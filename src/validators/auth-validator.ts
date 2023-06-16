@@ -1,5 +1,4 @@
 import * as Yup from "yup";
-import {ObjectSchema} from "yup";
 
 //#region user Auth
 const loginValidationSchema = Yup.object().shape({

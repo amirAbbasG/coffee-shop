@@ -8,5 +8,5 @@
 }
 
 .actionsWrapper {
-    @apply absolute inset-x-0 bottom-0 p-4
+    @apply absolute inset-x-0 bottom-0 p-4;
 }

@@ -1,7 +1,5 @@
 import React, {FC} from 'react';
 
-import Link from "next/link";
-
 import { EffectCards } from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
 import AddCommentIcon from '@mui/icons-material/AddComment';
