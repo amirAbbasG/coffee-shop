@@ -1,19 +1,13 @@
 import {FC, useState} from 'react';
 
-import Image from "next/image";
-
-import {Button, Drawer, IconButton} from "@mui/material";
+import {Drawer, IconButton} from "@mui/material";
 import {Form, Formik, FormikHelpers} from "formik";
-import GoogleIcon from '@mui/icons-material/Google';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CloseIcon from '@mui/icons-material/Close';
 import {motion} from "framer-motion";
-import {signIn} from "next-auth/react";
-import Countdown, {CountdownRenderProps} from "react-countdown";
 
 import {ModalProps} from "@custom-types/props";
-import { successMessage} from "@libs/toast";
-import {RenderIf, FormTextField, VerificationCodeInput, SubmitButton} from "@components";
+import {RenderIf, FormTextField, SubmitButton, VerifyCodeSection, LoginTypeSection} from "@components";
 import {validateAction} from "@validators/auth-validator";
 
 const authActions = {
@@ -27,10 +21,10 @@ type AuthActions = typeof authActions[ActionKeys]
 const LoginDrawer: FC<ModalProps> = ({open, handleClose}) => {
     const [number, setNumber] = useState("");
     const [action, setAction] = useState<AuthActions>(authActions.loginType);
-    const [resendingCode, setResendingCode] = useState(false);
     const isVerify = action === authActions.verifyCode;
     const isLogin = action === authActions.login;
     const isLoginType = action === authActions.loginType
+    const main = isLoginType ? "loginType" : (isVerify ? "verifyCode" : "login")
 
     //#region send number to get code and login
     const loginUser = async (number: string) => {
@@ -65,41 +59,6 @@ const LoginDrawer: FC<ModalProps> = ({open, handleClose}) => {
         actions?.setSubmitting(false);
     };
 
-    const handleResend = async () => {
-        setResendingCode(true);
-        try {
-            // const { status } = await resendCodeApi(number);
-            successMessage("کد تایید مجددا ارسال شد ");
-
-        } catch (e) {
-            // showError(e);
-        } finally {
-            setResendingCode(false);
-        }
-    };
-
-    const rendererCountDown = ({minutes, seconds, completed}: CountdownRenderProps) => {
-        if (completed) {
-            return (
-                <div className="flex">
-                    <p className="text-gray-600">کد را دریافت نکرده اید ؟</p>
-                    <Button color="primary" variant="text" onClick={handleResend}>
-                        ارسال مجدد کد
-                    </Button>
-                </div>
-            );
-        } else {
-            return (
-                <p className="text-gray-600">
-                    {`ارسال مجدد کد تایید تا ${minutes + ":" + seconds} ثانیه دیگر`}
-                </p>
-            );
-        }
-    };
-
-    const handleLoginGoogle = async () => {
-        await signIn("google")
-    }
 
     const handleBack = () => {
         if (isLoginType) handleClose()
@@ -107,6 +66,13 @@ const LoginDrawer: FC<ModalProps> = ({open, handleClose}) => {
         if (isVerify) setAction(authActions.login)
     }
 
+    const mainComponents = {
+        loginType: LoginTypeSection,
+        verifyCode: () => <VerifyCodeSection number={number}/> ,
+        login: () => <></>
+    }
+
+    const Main = mainComponents[main]
 
     return (
         <Drawer
@@ -143,27 +109,12 @@ const LoginDrawer: FC<ModalProps> = ({open, handleClose}) => {
                 }}
             >
                 <Form className="col h-full justify-between">
-                    <RenderIf isTrue={isLoginType}>
-                        <motion.div
-                            animate={{
-                                scale: [1, 1.5, 1.5, 1, 1],
-                                rotate: [0, 0, 270, 270, 0],
-                            }}
-                            transition={{duration: 1.5}}
-                            >
-                        <Image src="/images/logos/logo.png" alt="logo" width={100} height={100} className="mx-auto my-5"/>
-                        </motion.div>
-                        <Button
-                            className="py-2"
-                            onClick={handleLoginGoogle}
-                            startIcon={<GoogleIcon sx={{color: "primary.dark"}}/>}
-                            variant="outlined">
-
-                            ورود با گوگل
-                        </Button>
-                    </RenderIf>
-
                     <RenderIf isTrue={!isLoginType}>
+                        <motion.div
+                            initial={{opacity: 0}}
+                            animate={{opacity: 1}}
+                            transition={{duration: .8}}
+                        >
                         <FormTextField
                             dir="ltr"
                             title="شماره موبایل"
@@ -177,26 +128,10 @@ const LoginDrawer: FC<ModalProps> = ({open, handleClose}) => {
                             type="tel"
                             inputMode="numeric"
                         />
+                        </motion.div>
                     </RenderIf>
+                    <Main/>
 
-                    {/*show on verify code*/}
-                    <RenderIf isTrue={isVerify}>
-                        <div>
-                            <p className="my-4 text-xs text-center text-gray-700">
-                                {`کد تایید 5 رقمی به شماره ${number} ارسال شد`}
-                            </p>
-                            <VerificationCodeInput/>
-                            <div className="col items-center pt-2">
-                                <RenderIf isTrue={!resendingCode}>
-                                    <Countdown
-                                        date={Date.now() + 2 * 1000 * 60}
-                                        renderer={rendererCountDown}
-                                    />
-                                </RenderIf>
-                            </div>
-                        </div>
-
-                    </RenderIf>
                     <SubmitButton title={isLoginType ? "ورود با شماره موبایل" : "تایید"}/>
                 </Form>
             </Formik>

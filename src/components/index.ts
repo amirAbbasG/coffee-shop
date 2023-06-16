@@ -15,6 +15,8 @@ export {default as CommentCard} from "@components/cards/CommentCard"
 export {default as CategoriesSection} from "@components/sections/CategoriesSection"
 export {default as MenuShowCasesSection} from "@components/sections/MenuShowCasesSection"
 export {default as ImageGallery} from "@components/sections/ImageGallery"
+export {default as VerifyCodeSection} from "@components/sections/VerifyCodeSection"
+export {default as LoginTypeSection} from "@components/sections/LoginTypeSection"
 //#endregion
 
 //#region modals
